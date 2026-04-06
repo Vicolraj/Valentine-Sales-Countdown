@@ -1,0 +1,169 @@
+.Countdown {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+}
+
+.Countdown > h3 {
+    font-size: 1.7rem;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 42px;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.679);
+}
+
+.TimerComponent {}
+
+.timecontainer {
+    display: flex;
+    width: max-content;
+}
+
+.digitsContainer {
+    display: flex;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.spacer {
+    margin-right: 10px;
+}
+
+/* ─── FLIP DIGIT TILE ─────────────────────────────────── */
+.flip-digit {
+    position: relative;
+    width: 35px;
+    height: 42px;
+    margin: 1.5px;
+    border-radius: 2px;
+    overflow: hidden;           /* clip cards within the tile */
+    perspective: 300px;
+    background-color: rgba(244, 168, 168, 0.16);
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.679);
+}
+
+/* ─── STATIC HALVES (always visible background) ──────── */
+.flip-static {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(248, 161, 161, 0.174);
+}
+
+.flip-static-top {
+    top: 0;
+    align-items: flex-start;   /* shows top half of the numeral */
+    border-radius: 2px 2px 0 0;
+}
+
+.flip-static-bottom {
+    bottom: 0;
+    align-items: flex-end;     /* shows bottom half of the numeral */
+    border-radius: 0 0 2px 2px;
+    box-shadow: inset 0px 6px 8px -6px rgba(0, 0, 0, 0.4);
+}
+
+/* Position the text so it sits correctly in each half */
+.flip-static-top > span {
+    display: block;
+    line-height: 42px;         /* full tile height → top half clips naturally */
+    height: 42px;
+}
+
+.flip-static-bottom > span {
+    display: block;
+    line-height: 0;            /* align baseline to bottom of tile */
+    height: 42px;
+    margin-bottom: -21px;      /* push text up so bottom half shows */
+}
+
+/* ─── HAIRLINE DIVIDER ───────────────────────────────── */
+.flip-divider {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.35);
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* ─── ANIMATED FLAP CARDS ────────────────────────────── */
+.flip-card {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(244, 168, 168, 0.16);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* TOP FLAP: occupies top half, shows PREVIOUS digit, folds downward */
+.flip-top-flap {
+    top: 0;
+    align-items: flex-start;
+    border-radius: 2px 2px 0 0;
+    transform-origin: center bottom;
+    z-index: 3;
+    animation: flipTop 0.15s ease-in forwards;
+}
+
+.flip-top-flap > span {
+    display: block;
+    line-height: 42px;
+    height: 42px;
+}
+
+/* BOTTOM FLAP: occupies bottom half, shows NEW digit, unfolds downward */
+.flip-bottom-flap {
+    bottom: 0;
+    align-items: flex-end;
+    border-radius: 0 0 2px 2px;
+    transform-origin: center top;
+    transform: rotateX(90deg);
+    z-index: 2;
+    animation: flipBottom 0.15s ease-out 0.15s forwards;
+    box-shadow: inset 0px 6px 8px -6px rgba(0, 0, 0, 0.4);
+}
+
+.flip-bottom-flap > span {
+    display: block;
+    line-height: 0;
+    height: 42px;
+    margin-bottom: -21px;
+}
+
+@keyframes flipTop {
+    0%   { transform: rotateX(0deg); }
+    100% { transform: rotateX(-90deg); }
+}
+
+@keyframes flipBottom {
+    0%   { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
+}
+
+/* ─── LABELS ─────────────────────────────────────────── */
+.digitsLabel {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.digitsLabel > span {
+    width: 100%;
+    text-align: center;
+}

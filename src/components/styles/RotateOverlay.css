@@ -1,0 +1,49 @@
+.RotateOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a0a0a 0%, #3e1212 100%);
+    z-index: 10000;
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.rotate-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.rotate-icon {
+    animation: rotateDevice 2s infinite ease-in-out;
+}
+
+@keyframes rotateDevice {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(90deg); }
+    100% { transform: rotate(90deg); }
+}
+
+/* Only show in portrait orientation on small screens */
+@media screen and (orientation: portrait) and (max-width: 900px) {
+    .RotateOverlay {
+        display: flex;
+    }
+}
+
+.RotateOverlay h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.RotateOverlay p {
+    font-size: 1rem;
+    opacity: 0.8;
+}

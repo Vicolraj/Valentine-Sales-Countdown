@@ -1,0 +1,14 @@
+.ValentinesBanner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.ValentinesBanner h2 {
+    font-size: 3.355rem;
+    font-weight: bolder;
+    text-align: center;
+    line-height: normal;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.679);
+}

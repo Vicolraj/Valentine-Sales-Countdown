@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 5px;
+}
+
+body > * {
+    min-width: 100%;
+}
+
+.mainPage {
+    background-image: url(./assets/realbg.webp);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    /* Fixed design size — scales down on smaller screens */
+    width: 1280px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+
+    /* Scale uniformly so it looks exactly like the desktop version, just smaller */
+    transform-origin: center center;
+    /* Default: no scale needed for desktop */
+}
+
+/* Scale the banner proportionally on smaller landscape screens */
+@media screen and (orientation: landscape) and (max-width: 1300px) {
+    .mainPage {
+        transform: scale(calc((100vw - 14px) / 1280));
+    }
+}
+
+@media screen and (orientation: landscape) and (max-width: 900px) {
+    .mainPage {
+        transform: scale(calc((100vw - 14px) / 1280));
+    }
+}

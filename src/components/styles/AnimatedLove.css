@@ -1,0 +1,44 @@
+.AnimatedLove {
+    position: relative;
+    padding: 15px;
+    width: 100px;
+    aspect-ratio: 1/1;
+    margin-top: 37px;
+    margin-left: -11px;
+}
+
+.loverDown, .loverUp {
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.loverDown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 1/1;
+    margin-left: -2px;
+    animation-name: heartPulse;
+    animation-delay: 1s; /* 1s offset from loverUp */
+}
+
+.loverUp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    aspect-ratio: 1/1;
+    margin-left: 15px;
+    animation-name: heartPulse;
+}
+
+/* Very subtle: tiny vertical drift + barely-noticeable scale */
+@keyframes heartPulse {
+    0%   { transform: translateY(0px)  scale(1.00); }
+    25%  { transform: translateY(-3px) scale(0.97); }   /* subtle scale down + drift up */
+    50%  { transform: translateY(-7px) scale(0.97); }   /* peak up */
+    75%  { transform: translateY(-3px) scale(1.03); }   /* subtle scale up + drift down */
+    100% { transform: translateY(0px)  scale(1.00); }   /* back to start */
+}
