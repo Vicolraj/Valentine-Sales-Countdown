@@ -27,7 +27,7 @@ body > * {
     background-attachment: fixed;
     /* Fixed design size — scales down on smaller screens */
     width: 1280px;
-    height: 100px;
+    height: 150px;
     transform-origin: center center;
     overflow: hidden;
     position: relative;
